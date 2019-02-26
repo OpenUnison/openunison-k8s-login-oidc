@@ -1,0 +1,53 @@
+<chain name="enterprise_idp" level="20" root="o=Data">
+  <authMech>
+    <name>oidc</name>
+    <required>required</required>
+    <params>
+      <param name="bearerTokenName" value="oidcBearerToken" />
+      <param name="clientid" value="#[OIDC_CLIENT_ID]" />
+      <param name="secretid" value="#[OIDC_CLIENT_SECRET]" />
+      <param name="responseType" value="code" />
+      <param name="idpURL" value="#[OIDC_IDP_AUTH_URL]" />
+      <param name="loadTokenURL" value="#[OIDC_IDP_TOKEN_URL]" />
+      <param name="scope" value="openid email profile" />
+      <param name="linkToDirectory" value="false" />
+      <param name="noMatchOU" value="oidc" />
+      <param name="lookupFilter" value="(uid=${sub})" />
+      <param name="defaultObjectClass" value="inetOrgPerson" />
+      <param name="uidAttr" value="sub" />
+      <param name="hd" value="#[OIDC_IDP_LIMIT_DOMAIN]" />
+      <param name="userLookupClassName" value="com.tremolosecurity.unison.proxy.auth.openidconnect.loadUser.LoadJWTFromAccessToken" />
+      <param name="jwtTokenAttributeName" value="id_token" />
+
+    </params>
+  </authMech>
+  <authMech>
+    <name>map</name>
+    <required>required</required>
+    <params>
+      <param name="map" value="uid=sub" />
+      <param name="map" value="mail=email" />
+      <param name="map" value="givenName=given_name" />
+      <param name="map" value="sn=family_name" />
+      <param name="map" value="displayName=name" />
+      <param name="map" value="memberOf=groups" />
+    </params>
+  </authMech>
+  <authMech>
+    <name>jit</name>
+    <required>required</required>
+    <params>
+      <param name="nameAttr" value="uid" />
+      <param name="workflowName" value="jitdb" />
+    </params>
+  </authMech>
+  <authMech>
+    <name>genoidctoken</name>
+    <required>required</required>
+    <params>
+      <param name="idpName" value="k8sIdp" />
+      <param name="trustName" value="kubernetes" />
+
+    </params>
+  </authMech>
+</chain>
