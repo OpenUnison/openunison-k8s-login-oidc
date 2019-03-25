@@ -20,6 +20,7 @@ Prior to deploying Orchestra you will need:
 1. Kubernetes 1.10 or higher
 2. The Nginx Ingress Controller deployed (https://kubernetes.github.io/ingress-nginx/deploy/)
 3. Information from your OpenID Connect Identity Provider per *Create Environments File* in the next section. When registering OpenUnison with your identity provider, use the hostname and /auth/oidc as the redirect. For instance if OpenUnison will be running on k8sou.tremolo.lan.com then the redirect_uri will be https://k8sou.tremolo.lan/auth/oidc
+4. Deploy the dashboard to your cluster
 
 ### Required Attributes for Your Identity Provider
 
