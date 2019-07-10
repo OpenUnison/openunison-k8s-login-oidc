@@ -14,8 +14,8 @@
   <AppenderRef ref="STDOUT" level="error"/>
 </Logger>
 
-<Logger name="com.tremolosecurity.unison.proxy.auth.openidconnect"  level="debug">
+<!-- <Logger name="com.tremolosecurity.unison.proxy.auth.openidconnect"  level="debug">
   <AppenderRef ref="STDOUT" />
-</Logger>
+</Logger> -->
   </Loggers>
 </Configuration>
