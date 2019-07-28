@@ -17,7 +17,7 @@ data:
     \ = nonSecretInProp['K8S_DASHBOARD_NAMESPACE'];\n}\n\n\nksPassword = inProp['unisonKeystorePassword'];\n\
     ouKs = Java.type(\"java.security.KeyStore\").getInstance(\"PKCS12\");\nouKs.load(null,ksPassword.toCharArray());\n\
     \nuse_k8s_cm = nonSecretInProp['USE_K8S_CM'] == \"true\";\n\n\ninProp['K8S_DB_SECRET']\
-    \ = java.util.UUID.randomUUID().toString();\n\nvar docker_image = 'docker.io/tremolosecurity/openunison-k8s-login-activedirectory:latest';\n\
+    \ = java.util.UUID.randomUUID().toString();\n\nvar docker_image = 'docker.io/tremolosecurity/openunison-k8s-login-oidc:latest';\n\
     \nif (nonSecretInProp['image'] != null) {\n  docker_image = nonSecretInProp['image'];\n\
     \  delete nonSecretInProp['image'];\n}\n\n\nprint(\"Runing kubectl create\");\n\
     k8s.kubectlCreate(deploymentTemplate);\nprint(\"kubectl complete\");\n\n\n\n\n\
