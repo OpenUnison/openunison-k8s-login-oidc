@@ -25,12 +25,12 @@
     <name>map</name>
     <required>required</required>
     <params>
-      <param name="map" value="uid=sub" />
-      <param name="map" value="mail=email" />
-      <param name="map" value="givenName=given_name" />
-      <param name="map" value="sn=family_name" />
-      <param name="map" value="displayName=name" />
-      <param name="map" value="memberOf=groups" />
+      <param name="map" value="uid=#[SUB_CLAIM:sub]" />
+      <param name="map" value="mail=#[EMAIL_CLAIM:email]" />
+      <param name="map" value="givenName=#[GIVEN_NAME_CLAIM:given_name]" />
+      <param name="map" value="sn=#[FAMILY_NAME_CLAIM:family_name]" />
+      <param name="map" value="displayName=#[DISPLAY_NAME_CLAIM:name]" />
+      <param name="map" value="memberOf=#[GROUPS_CLAIM:groups]" />
     </params>
   </authMech>
   <authMech>

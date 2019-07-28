@@ -88,7 +88,14 @@ unisonKeystorePassword=start123
 | OIDC_IDP_AUTH_URL | Your identity provider's authorization url |
 | OIDC_IDP_TOKEN_URL | Your identity provider's token url |
 | OIDC_IDP_LIMIT_DOMAIN | An email domain to limit access to |
-
+| K8S_DASHBOARD_NAMESPACE | **Optional** If specified, the namespace for the dashboard.  For the 1.x dashboard this is `kube-system`, for the 2.x dashboard this is `kubernetes-dashboard` |
+| K8S_CLUSTER_NAME | **Optional** If specified, the name of the cluster to use in the `./kube-config`.  Defaults to `kubernetes` |
+| SUB_CLAIM | **Optional** If specified, the claim from the `id_token` to use for the `sub` attribute |
+| EMAIL_CLAIM | **Optional** If specified, the claim from the `id_token` to use for the `mail` attribute |
+| GIVEN_NAME_CLAIM | **Optional** If specified, the claim from the `id_token` to use for the `givenName` attribute |
+| FAMILY_NAME_CLAIM | **Optional** If specified, the claim from the `id_token` to use for the `sn` attribute |
+| DISPLAY_NAME_CLAIM | **Optional** If specified, the claim from the `id_token` to use for the `dipslayName` attribute |
+| GROUPS_CLAIM | **Optional** If specified, the claim from the `id_token` to use for the `groups` attribute |
 
 *Detailed Description of Secret Properties*
 
