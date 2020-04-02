@@ -13,10 +13,11 @@
     <Logger name="org.reflections"  level="info">
   <AppenderRef ref="STDOUT" level="error"/>
 </Logger>
-<!--
+
 <Logger name="com.tremolosecurity.unison.proxy.auth.openidconnect"  level="debug">
   <AppenderRef ref="STDOUT" />
 </Logger>
--->
+
+
   </Loggers>
 </Configuration>
