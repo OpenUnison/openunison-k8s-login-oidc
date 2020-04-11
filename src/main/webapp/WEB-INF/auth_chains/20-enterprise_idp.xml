@@ -9,7 +9,7 @@
       <param name="responseType" value="code" />
       <param name="idpURL" value="#[OIDC_IDP_AUTH_URL]" />
       <param name="loadTokenURL" value="#[OIDC_IDP_TOKEN_URL]" />
-      <param name="scope" value="openid email profile groups" />
+      <param name="scope" value="#[OIDC_SCOPES]" />
       <param name="linkToDirectory" value="false" />
       <param name="noMatchOU" value="oidc" />
       <param name="lookupFilter" value="(uid=${sub})" />

@@ -109,6 +109,7 @@ Copy `values.yaml` and update as appropriate:
 | dashboard.service_name | The name of the service object for the dashboard |
 | k8s_cluster_name | The name of the cluster to use in the `./kube-config`.  Defaults to `kubernetes` |
 | image | The name of the image to use |
+| enable_impersonation | If `true`, OpenUnison will run in impersonation mode.  Instead of OpenUnison being integrated with Kubernetes via OIDC, OpenUnison will be a reverse proxy and impersonate users.  This is useful with cloud deployments where oidc is not an option |
 | monitoring.prometheus_service_account | The prometheus service account to authorize access to the /monitoring endpoint |
 | oidc.client_id | The client ID registered with your identity provider |
 | oidc.auth_url | Your identity provider's authorization url |
@@ -116,6 +117,7 @@ Copy `values.yaml` and update as appropriate:
 | oidc.domain | An email domain to limit access to |
 | oidc.user_in_idtoken | Set to `true` if the user's attributes (such as name and groups), is contained in the user's `id_token`.  Set to `false` if a call to the identity provider's user info endpoint is required to load the full profile |
 | oidc.userinfo_url | If `oidc.user_in_idtoken` is `false`, the `user_info` endpoint for your identity provider |
+| oidc.scopes | The list of scopes to include, may change based on your identity provider |
 | oidc.claims.sub | If specified, the claim from the `id_token` to use for the `sub` attribute |
 | oidc.claims.email | If specified, the claim from the `id_token` to use for the `mail` attribute |
 | oidc.claims.givenName | If specified, the claim from the `id_token` to use for the `givenName` attribute |
@@ -202,28 +204,4 @@ Please take a look at https://github.com/TremoloSecurity/OpenUnison/wiki/trouble
 
 # Customizing Orchestra
 
-Orchestra is an application built on OpenUnison with several "opinions" on how you should manage authentication in your cluster.  These opinions my be close to what you need, but not exact.  In order to customize Orchestra you'll need:
-
-1. git
-2. OpenJDK 8
-3. Apache Maven
-4. Docker registry
-
-First, fork this GitHub project.  Then make your edits.  To deploy to a local Docker daemon that you want to then use to push to a registry:
-
-```
-mvn clean package
-mvn compile jib:dockerBuild
-docker tag image:version registry/image:version
-docker push registry/image:version
-```
-
-If you have credentials to access a registry remotely and are not running docker locally, you can push the image directly to your registry:
-
-```
-mvn clean package
-export OU_CONTAINER_DEST=registry/image:version
-export OU_REG_USER=registry_user
-export OU_REG_PASSWORD=registry_password
-mvn compile jib:build
-```
+To customize Orchestra - https://github.com/TremoloSecurity/OpenUnison/wiki/troubleshooting#customizing-orchestra
