@@ -1,6 +1,6 @@
 <mechanism name="map">
   <uri>/auth/map</uri>
-  <className>com.tremolosecurity.proxy.auth.MappingAuthmech</className>
+  <className>com.tremolosecurity.proxy.auth.FullMappingAuthMech</className>
   <init>
   </init>
 </mechanism>
