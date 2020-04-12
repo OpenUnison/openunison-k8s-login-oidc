@@ -87,7 +87,7 @@ kind: Secret
 
 ## Deploy OpenUnison
 
-Copy `values.yaml` and update as appropriate:
+Copy `values.yaml` (https://raw.githubusercontent.com/OpenUnison/helm-charts/master/openunison-k8s-login-oidc/values.yaml) and update as appropriate:
 
 | Property | Description |
 | -------- | ----------- |
@@ -125,7 +125,7 @@ Copy `values.yaml` and update as appropriate:
 | oidc.claims.displayName | If specified, the claim from the `id_token` to use for the `dipslayName` attribute |
 | oidc.claims.groups | If specified, the claim from the `id_token` to use for the `groups` attribute |
 
-Additionally, you can add your identity provider's TLS base64 encoded PEM certificate to your values under `trusted_certs` for `pem_b64`.  This will allow OpenUnison to talk to your identity provider using TLS if it doesn't use a commercially signed certificate.
+Additionally, you can add your identity provider's TLS base64 encoded PEM certificate to your values under `trusted_certs` for `pem_b64`.  This will allow OpenUnison to talk to your identity provider using TLS if it doesn't use a commercially signed certificate.  If you don't need a certificate to talk to your identity provider, replace the `trusted_certs` section with `trusted_certs: []`.
 
 Finally, run the helm chart:
 
