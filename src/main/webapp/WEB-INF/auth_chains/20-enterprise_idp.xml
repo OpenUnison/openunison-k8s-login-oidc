@@ -9,15 +9,21 @@
       <param name="responseType" value="code" />
       <param name="idpURL" value="#[OIDC_IDP_AUTH_URL]" />
       <param name="loadTokenURL" value="#[OIDC_IDP_TOKEN_URL]" />
-      <param name="scope" value="openid email profile" />
+      <param name="scope" value="#[OIDC_SCOPES]" />
       <param name="linkToDirectory" value="false" />
       <param name="noMatchOU" value="oidc" />
       <param name="lookupFilter" value="(uid=${sub})" />
       <param name="defaultObjectClass" value="inetOrgPerson" />
       <param name="uidAttr" value="sub" />
       <param name="hd" value="#[OIDC_IDP_LIMIT_DOMAIN]" />
-      <param name="userLookupClassName" value="com.tremolosecurity.unison.proxy.auth.openidconnect.loadUser.LoadJWTFromAccessToken" />
-      <param name="jwtTokenAttributeName" value="id_token" />
+      
+      <!-- For use when attributes are in the id_token -->
+      <param name="userLookupClassName" value="com.tremolosecurity.unison.proxy.auth.openidconnect.loadUser.LoadJWTFromAccessToken" useWhen="OIDC_USER_IN_IDTOKEN=true" />
+      <param name="jwtTokenAttributeName" value="id_token" useWhen="OIDC_USER_IN_IDTOKEN=true"/>
+
+      <!-- For use when the account needs to be pulled from the user endpoing -->
+      <param name="userLookupClassName" value="com.tremolosecurity.unison.proxy.auth.openidconnect.loadUser.LoadAttributesFromWS" useWhen="OIDC_USER_IN_IDTOKEN=false" />
+      <param name="restURL" value="#[OIDC_IDP_USER_URL]" useWhen="OIDC_USER_IN_IDTOKEN=false" />
 
     </params>
   </authMech>
@@ -25,12 +31,12 @@
     <name>map</name>
     <required>required</required>
     <params>
-      <param name="map" value="uid=#[SUB_CLAIM:sub]" />
-      <param name="map" value="mail=#[EMAIL_CLAIM:email]" />
-      <param name="map" value="givenName=#[GIVEN_NAME_CLAIM:given_name]" />
-      <param name="map" value="sn=#[FAMILY_NAME_CLAIM:family_name]" />
-      <param name="map" value="displayName=#[DISPLAY_NAME_CLAIM:name]" />
-      <param name="map" value="memberOf=#[GROUPS_CLAIM:groups]" />
+      <param name="map" value="uid|composite|${#[SUB_CLAIM:sub]}" />
+      <param name="map" value="mail|composite|${#[EMAIL_CLAIM:email]}" />
+      <param name="map" value="givenName|composite|${#[GIVEN_NAME_CLAIM:given_name]}" />
+      <param name="map" value="sn|composite|${#[FAMILY_NAME_CLAIM:family_name]}" />
+      <param name="map" value="displayName|composite|${#[DISPLAY_NAME_CLAIM:name]}" />
+      <param name="map" value="memberOf|composite|${#[GROUPS_CLAIM:groups]}" />
     </params>
   </authMech>
   <authMech>
