@@ -36,7 +36,7 @@
       <param name="map" value="givenName|composite|${#[GIVEN_NAME_CLAIM:given_name]}" />
       <param name="map" value="sn|composite|${#[FAMILY_NAME_CLAIM:family_name]}" />
       <param name="map" value="displayName|composite|${#[DISPLAY_NAME_CLAIM:name]}" />
-      <param name="map" value="memberOf|composite|${#[GROUPS_CLAIM:groups]}" />
+      <param name="map" value="memberOf|user|#[GROUPS_CLAIM:groups]" />
     </params>
   </authMech>
   <authMech>
