@@ -139,6 +139,10 @@ Run `kubectl describe configmap api-server-config -n openunison` to get the SSO 
 
 To login, open your browser and go to the host you specified for `OU_HOST` in your `input.props`.  For instance if `OU_HOST` is `k8sou.tremolo.lan` then navigate to https://k8sou.tremolo.lan.  You'll be prompted for your Active Directory username and password.  Once authenticated you'll be able login to the portal and generate your `.kube/config` from the Tokens screen.
 
+## CLI Login
+
+You can bypass manually launching a browser with the `oulogin` kubectl plugin - https://github.com/TremoloSecurity/kubectl-login.  This plugin will launch a browser for you, authenticate you then configure your kubectl configuration without any pre-configuration on your clients. 
+
 ## Authorizing Access via RBAC
 
 On first login, if you haven't authorized access to any Kubernetes roles you won't be able to do anything.  There are two approaches you can take:
