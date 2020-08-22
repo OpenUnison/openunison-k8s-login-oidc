@@ -32,7 +32,7 @@
       <param name="userLookupClassName" value="com.tremolosecurity.unison.proxy.auth.openidconnect.loadUser.LoadJWTFromAccessToken" />
       <param name="jwtTokenAttributeName" value="id_token" />
 
-     </params>
+    </params>
 </authMech>
 <authMech>
     <name>genoidctoken</name>
@@ -43,4 +43,4 @@
       <param name="overrideURL" value="https://#[OU_HOST]/auth/idp/k8sIdp" />
     </params>
   </authMech>
-</chain> 
+</chain>

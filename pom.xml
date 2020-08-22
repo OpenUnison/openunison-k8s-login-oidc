@@ -23,6 +23,7 @@
       <groupId>com.tremolosecurity.unison</groupId>
       <artifactId>openunison-on-undertow</artifactId>
       <version>1.0.20</version>
+
     </dependency>
     <dependency>
       <groupId>com.tremolosecurity.unison</groupId>
@@ -38,12 +39,6 @@
       <type>pom</type>
     </dependency>
     <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.8-dmr</version>
-    </dependency>
-
-        <dependency>
       <groupId>com.tremolosecurity.unison</groupId>
       <artifactId>unison-scalejs-main</artifactId>
       <version>1.0.20</version>
@@ -75,7 +70,7 @@
       <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>jib-maven-plugin</artifactId>
-        <version>2.1.0</version>
+        <version>2.5.1</version>
         <configuration>
           <from>
             <image>tremolosecurity/openunison-jib-builder:latest</image>
