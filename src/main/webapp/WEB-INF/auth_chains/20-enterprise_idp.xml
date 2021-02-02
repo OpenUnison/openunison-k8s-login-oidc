@@ -1,5 +1,5 @@
 <chain name="enterprise_idp" level="20" root="o=Data">
-  <authMech>
+  <authMech >
     <name>oidc</name>
     <required>required</required>
     <params>
