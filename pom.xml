@@ -23,7 +23,12 @@
       <groupId>com.tremolosecurity.unison</groupId>
       <artifactId>openunison-on-undertow</artifactId>
       <version>1.0.21</version>
-
+      <exclusions>
+				<exclusion>
+					<groupId>com.tremolosecurity.myvd</groupId>
+					<artifactId>apacheds-service</artifactId>
+				</exclusion>
+			</exclusions>
     </dependency>
     <dependency>
       <groupId>com.tremolosecurity.unison</groupId>
