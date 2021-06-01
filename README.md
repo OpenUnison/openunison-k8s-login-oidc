@@ -97,8 +97,11 @@ Copy `values.yaml` (https://raw.githubusercontent.com/OpenUnison/helm-charts/mas
 | network.k8s_url | The URL for the Kubernetes API server | 
 | network.session_inactivity_timeout_seconds | The number of seconds of inactivity before the session is terminated, also the length of the refresh token's session |
 | network.createIngressCertificate | If true (default), the operator will create a self signed Ingress certificate.  Set to false if using an existing certificate or LetsEncrypt |
-| network.ingress_type | The type of `Ingress` object to create.  Right now only `nginx` is supported |
+| network.force_redirect_to_tls | If `true`, all traffic that reaches OpenUnison over http will be redirected to https.  Defaults to `true`.  Set to `false` when using an external TLS termination point, such as an istio sidecar proxy |
+| network.ingress_type | The type of `Ingress` object to create.  `nginx` and [istio](https://openunison.github.io/ingresses/istio/) is supported |
 | network.ingress_annotations | Annotations to add to the `Ingress` object |
+| network.ingress_certificate | The certificate that the `Ingress` object should reference |
+| network.istio.selectors | Labels that the istio `Gateway` object will be applied to.  Default is `istio: ingressgateway` |
 | cert_template.ou | The `OU` attribute for the forward facing certificate |
 | cert_template.o | The `O` attribute for the forward facing certificate |
 | cert_template.l | The `L` attribute for the forward facing certificate |
